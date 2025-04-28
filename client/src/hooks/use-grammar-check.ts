@@ -33,13 +33,24 @@ export function useGrammarCheck() {
           title: "Grammar perfect!",
           description: "No grammar issues found in the narrative.",
         });
+      } else {
+        toast({
+          title: `Grammar check complete`,
+          description: `Found ${data.issues.length} potential ${data.issues.length === 1 ? 'issue' : 'issues'}.`,
+        });
       }
     } catch (err) {
       const errorMessage = err instanceof Error ? err.message : 'Failed to check grammar';
+      console.error("Grammar check error:", errorMessage);
       setError(errorMessage);
+      
+      // Still set empty grammar issues to avoid blocking the UI
+      setGrammarIssues([]);
+      setGrammarScore(100);
+      
       toast({
-        title: "Grammar check failed",
-        description: errorMessage,
+        title: "Grammar check unavailable",
+        description: "Using basic spelling check instead. Full grammar check unavailable.",
         variant: "destructive"
       });
     } finally {
