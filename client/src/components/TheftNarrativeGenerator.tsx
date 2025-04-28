@@ -15,15 +15,15 @@ import { applyGrammarSuggestion, applyAllGrammarSuggestions, GrammarIssue } from
 
 const theftTemplates = {
   "Cancellation - Traditional, all items were scanned":
-    "The individual wearing {Type of Clothing} selected {Number of Snacks/Drinks}, scanned {Number of Snacks/Drinks} in the kiosk, canceled the transaction, and left the market area with {Number of Items Left With} unpaid item/s.",
+    "The individual wearing {Type of Clothing} selected {Number of Snacks/Drinks}, scanned {Number of Snacks/Drinks} in the kiosk, canceled the transaction, and left the market area with {Number of Items Left With} unpaid items.",
   "Cancellation - Traditional, only some items were scanned":
-    "The individual wearing {Type of Clothing} selected {Number of Snacks/Drinks}, scanned {Number of Snacks/Drinks} in the kiosk while overlooking {Number of Items Overlooked/Unpaid}, canceled the transaction, and left the market area with {Number of Items Left With} unpaid item/s.",
+    "The individual wearing {Type of Clothing} selected {Number of Snacks/Drinks}, scanned {Number of Snacks/Drinks} in the kiosk while overlooking {Number of Items Overlooked/Unpaid}, canceled the transaction, and left the market area with {Number of Items Left With} unpaid items.",
   "Cancellation - Failed Payment":
-    "The individual wearing {Type of Clothing} selected {Number of Snacks/Drinks} and scanned {Number of Snacks/Drinks} in the kiosk. The individual attempted to pay {Number of Items Paid} times {Item Name from the Report}, but it/they was/were unsuccessful. Then, the individual left the market area with {Number of Items Left With} unpaid item/s.",
+    "The individual wearing {Type of Clothing} selected {Number of Snacks/Drinks} and scanned {Number of Snacks/Drinks} in the kiosk. The individual attempted to pay {Number of Items Paid} times for {Item Name from the Report}, but was unsuccessful. Then, the individual left the market area with {Number of Items Left With} unpaid items.",
   "Cancellation - Timeout":
-    "The individual wearing {Type of Clothing} selected {Number of Snacks/Drinks} and scanned {Number of Snacks/Drinks} in the kiosk. The individual attempted to pay, but progress was ceased for the transaction. While the pending transaction timed out due to inactivity, the individual left the market area with {Number of Items Left With} unpaid item/s.",
+    "The individual wearing {Type of Clothing} selected {Number of Snacks/Drinks} and scanned {Number of Snacks/Drinks} in the kiosk. The individual attempted to pay, but progress was ceased for the transaction. While the pending transaction timed out due to inactivity, the individual left the market area with {Number of Items Left With} unpaid items.",
   "Cancellation - Proxy Cancel":
-    "The individual wearing {Type of Clothing} selected {Number of Snacks/Drinks} and scanned {Number of Snacks/Drinks} in the kiosk. The individual attempted to pay, but progress was ceased for the transaction. Nevertheless, the individual left the market area with {Number of Items Left With} unpaid item/s while another individual canceled the transaction.",
+    "The individual wearing {Type of Clothing} selected {Number of Snacks/Drinks} and scanned {Number of Snacks/Drinks} in the kiosk. The individual attempted to pay, but progress was ceased for the transaction. Nevertheless, the individual left the market area with {Number of Items Left With} unpaid items while another individual canceled the transaction.",
   "Cancellation/Underinging":
     "The individual wearing {Type of Clothing} selected {Number of Snacks/Drinks}, scanned {Number of Snacks/Drinks} in the kiosk, and canceled the transaction. Then, the individual re-scanned the same items, but despite completing the transaction, the individual only paid for {Number of Items Paid} out of {Number of Snacks/Drinks} actual items. Nevertheless, the individual left the market area with {Number of Items Paid} paid items and {Number of Items Overlooked/Unpaid} unpaid items.",
   "Underinging - Traditional":
@@ -37,25 +37,25 @@ const theftTemplates = {
   "Walkout - Traditional":
     "The individual wearing {Type of Clothing} selected {Number of Snacks/Drinks} and left the market area without paying for {Number of Snacks/Drinks}.",
   "Walkout - Pseudo-Cancellation":
-    "The individual wearing {Type of Clothing} selected {Number of Snacks/Drinks} and scanned {Number of Snacks/Drinks} in the kiosk. The individual attempted to pay, but progress ceased. While the pending transaction returned to the home screen, the individual left with {Number of Items Left With} unpaid item/s.",
+    "The individual wearing {Type of Clothing} selected {Number of Snacks/Drinks} and scanned {Number of Snacks/Drinks} in the kiosk. The individual attempted to pay, but progress ceased. While the pending transaction returned to the home screen, the individual left with {Number of Items Left With} unpaid items.",
   "Walkout - Fake Scan":
-    "The individual wearing {Type of Clothing} selected {Number of Snacks/Drinks} and attempted to scan {Number of Snacks/Drinks}, but nothing happened. Then left without paying.",
+    "The individual wearing {Type of Clothing} selected {Number of Snacks/Drinks} and attempted to scan {Number of Snacks/Drinks}, but nothing happened. The individual then left without paying.",
   "Walkout - Playing with the Kiosk":
-    "The individual wearing {Type of Clothing} selected {Number of Snacks/Drinks} and interacted with the kiosk, but did not scan the item(s). Then left without paying.",
+    "The individual wearing {Type of Clothing} selected {Number of Snacks/Drinks} and interacted with the kiosk, but did not scan the items. The individual then left without paying.",
   "Null Transactions":
-    "The individual wearing {Type of Clothing} entered the market and interacted with the kiosk, but as per the reports, did not scan anything. Selected {Number of Snacks/Drinks} and left with {Number of Items Left With} unpaid item/s after the transaction timed out.",
+    "The individual wearing {Type of Clothing} entered the market and interacted with the kiosk, but as per the reports, did not scan anything. The individual selected {Number of Snacks/Drinks} and left with {Number of Items Left With} unpaid items after the transaction timed out.",
   "Individual lingers in the market area":
     "The individual wearing {Type of Clothing} entered at {Time Item Consumed Without Paying}, stayed nearby, [insert theft narrative here], returned to the table, stayed until leaving with {Number of Items Overlooked/Unpaid} unpaid items at {Individual Left Time}.",
   "Individual lingers and consumes unpaid items":
     "The individual wearing {Type of Clothing} entered at {Time Item Consumed Without Paying}, stayed nearby, [insert theft narrative here], consumed unpaid items, and left with {Number of Items Overlooked/Unpaid} unpaid items at {Individual Left Time}.",
   "Individual goes off-cam and returns":
-    "...the individual went off-cam for a while. Then, the individual returned to the market area...",
+    "...the individual went off-camera for a while. Then, the individual returned to the market area...",
   "Kiosk not visible":
-    "...However/but, as per the market reports, the transaction was cancelled, and payments involving the item(s) of concern taking place during the indicated timeframe and the succeeding one-hour timeframe were non-existent. Nevertheless, the individual left the market area with {Number of Items Overlooked/Unpaid} items.",
+    "...However, as per the market reports, the transaction was cancelled, and payments involving the items of concern taking place during the indicated timeframe and the succeeding one-hour timeframe were non-existent. Nevertheless, the individual left the market area with {Number of Items Overlooked/Unpaid} items.",
   "Individual re-scans items":
     "[insert theft narrative here]...Then, the individual re-scanned {Number of Items Paid} items...",
   "Individual enters market area with others":
-    "The individual wearing {Type of Clothing} entered the market area accompanied by another individual (it is recommended to use the word \"they\")...[insert theft narrative here]"
+    "The individual wearing {Type of Clothing} entered the market area accompanied by another individual. They [insert theft narrative here]"
 };
 
 const fieldMappings = {
