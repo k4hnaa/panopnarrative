@@ -123,7 +123,7 @@ export default function TheftNarrativeGenerator() {
   };
 
   // Generate narrative from template
-  const generateNarrative = () => {
+  const generateNarrative = async () => {
     if (!formData.theftType) {
       toast({
         title: "Theft type required",
@@ -147,6 +147,18 @@ export default function TheftNarrativeGenerator() {
     
     // Reset grammar checking state when generating a new narrative
     setShowGrammarIssues(false);
+    
+    // Automatically run grammar check after generating narrative
+    try {
+      await checkGrammar(template);
+      // Show grammar issues if any were found
+      if (grammarIssues && grammarIssues.length > 0) {
+        setShowGrammarIssues(true);
+      }
+    } catch (error) {
+      // Error handling is already done in the checkGrammar function
+      console.error("Failed to run automatic grammar check:", error);
+    }
   };
 
   // Handle grammar check
