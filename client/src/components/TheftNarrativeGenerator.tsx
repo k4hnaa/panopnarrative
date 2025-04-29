@@ -19,9 +19,9 @@ const theftTemplates = {
   "Cancellation - Traditional, only some items were scanned":
     "The individual wearing {Type of Clothing} selected {Number of Snacks/Drinks}, scanned {Number of Snacks/Drinks} in the kiosk while overlooking {Number of Items Overlooked/Unpaid}, canceled the transaction, and left the market area with {Number of Items Left With} unpaid items.",
   "Cancellation - Failed Payment":
-    "The individual wearing {Type of Clothing} selected {Number of Snacks/Drinks} and scanned {Number of Snacks/Drinks} in the kiosk. The individual attempted to pay {Number of Items Paid} times for {Item Name from the Report}, but was unsuccessful. Then, the individual left the market area with {Number of Items Left With} unpaid items.",
+    "The individual wearing {Type of Clothing} selected {Number of Snacks/Drinks} and scanned {Number of Snacks/Drinks} in the kiosk. The individual attempted to pay {Number of Times Tried to Pay} times using {Payment Method Used} for {Item Name from the Report}, but was unsuccessful. Then, the individual left the market area with {Number of Items Left With} unpaid items.",
   "Cancellation - Timeout":
-    "The individual wearing {Type of Clothing} selected {Number of Snacks/Drinks} and scanned {Number of Snacks/Drinks} in the kiosk. The individual attempted to pay, but progress was ceased for the transaction. While the pending transaction timed out due to inactivity, the individual left the market area with {Number of Items Left With} unpaid items.",
+    "The individual wearing {Type of Clothing} selected {Number of Snacks/Drinks} and scanned {Number of Snacks/Drinks} in the kiosk. The individual attempted to pay {Number of Times Tried to Pay} times using {Payment Method Used}, but progress was ceased for the transaction. While the pending transaction timed out due to inactivity, the individual left the market area with {Number of Items Left With} unpaid items.",
   "Cancellation - Proxy Cancel":
     "The individual wearing {Type of Clothing} selected {Number of Snacks/Drinks} and scanned {Number of Snacks/Drinks} in the kiosk. The individual attempted to pay, but progress was ceased for the transaction. Nevertheless, the individual left the market area with {Number of Items Left With} unpaid items while another individual canceled the transaction.",
   "Cancellation/Underinging":
@@ -37,7 +37,7 @@ const theftTemplates = {
   "Walkout - Traditional":
     "The individual wearing {Type of Clothing} selected {Number of Snacks/Drinks} and left the market area without paying for {Number of Snacks/Drinks}.",
   "Walkout - Pseudo-Cancellation":
-    "The individual wearing {Type of Clothing} selected {Number of Snacks/Drinks} and scanned {Number of Snacks/Drinks} in the kiosk. The individual attempted to pay, but progress ceased. While the pending transaction returned to the home screen, the individual left with {Number of Items Left With} unpaid items.",
+    "The individual wearing {Type of Clothing} selected {Number of Snacks/Drinks} and scanned {Number of Snacks/Drinks} in the kiosk. The individual attempted to pay {Number of Times Tried to Pay} times using {Payment Method Used}, but progress ceased. While the pending transaction returned to the home screen, the individual left with {Number of Items Left With} unpaid items.",
   "Walkout - Fake Scan":
     "The individual wearing {Type of Clothing} selected {Number of Snacks/Drinks} and attempted to scan {Number of Snacks/Drinks}, but nothing happened. The individual then left without paying.",
   "Walkout - Playing with the Kiosk":
@@ -370,6 +370,26 @@ export default function TheftNarrativeGenerator() {
                   placeholder="e.g., 2"
                   value={formData.numberOfItemsOverlooked}
                   onChange={(e) => handleChange("numberOfItemsOverlooked", e.target.value)}
+                />
+              </div>
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-1">
+                  {formatFieldName("numberOfTimesTriedToPay")}
+                </label>
+                <Input
+                  placeholder="e.g., 3"
+                  value={formData.numberOfTimesTriedToPay}
+                  onChange={(e) => handleChange("numberOfTimesTriedToPay", e.target.value)}
+                />
+              </div>
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-1">
+                  {formatFieldName("paymentMethod")}
+                </label>
+                <Input
+                  placeholder="e.g., credit card, Apple Pay"
+                  value={formData.paymentMethod}
+                  onChange={(e) => handleChange("paymentMethod", e.target.value)}
                 />
               </div>
               <div>
